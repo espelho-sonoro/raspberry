@@ -13,10 +13,10 @@ MovementMessage = collections.namedtuple('MovementMessage', ['movement'])
 class MotorResource(resource.Resource):
 
     logger = logging.getLogger(__name__)
-    motor  = motor.Motor()
 
-    def __init__(self):
+    def __init__(self, motor):
         super(MotorResource, self).__init__()
+        self.motor = motor
         self.logger.info("Created a motor resource")
 
     async def render_get(self, request):
