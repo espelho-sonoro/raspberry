@@ -1,3 +1,4 @@
 aiocoap
 LinkHeader
 Flask
+simplejson
