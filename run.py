@@ -1,4 +1,6 @@
-from motor import *
+from services import *
+from controllers import *
+
 import logging
 import aiocoap
 import aiocoap.resource as resource
@@ -6,10 +8,13 @@ import asyncio
 
 logging.basicConfig(level=logging.DEBUG)
 
-SERVER_ADDRESS='coap://localhost'
+SERVER_ADDRESS='http://localhost:5000'
 
 def main():
     motor = Motor()
+    espelhos = Espelhos(SERVER_ADDRESS)
+
+    espelhos.register()
 
     root = aiocoap.resource.Site()
     root.add_resource(('.well-known', 'core'),
@@ -23,5 +28,4 @@ def main():
     loop.run_forever()
 
 if __name__ == "__main__":
-    #print(dir(motor))
     main()

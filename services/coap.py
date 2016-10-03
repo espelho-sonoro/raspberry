@@ -1,4 +1,3 @@
-from . import motor
 import aiocoap
 import aiocoap.resource as resource
 import asyncio
