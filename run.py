@@ -6,15 +6,19 @@ import aiocoap
 import aiocoap.resource as resource
 import asyncio
 
+from random import randint
+
 logging.basicConfig(level=logging.DEBUG)
 
 SERVER_ADDRESS='http://localhost:5000'
+PORT = '5683'
+NAME = 'espelhos-' + str(randint(100000, 999999))
 
 def main():
     motor = Motor()
     espelhos = Espelhos(SERVER_ADDRESS)
 
-    espelhos.register()
+    espelhos.register(NAME, PORT)
 
     root = aiocoap.resource.Site()
     root.add_resource(('.well-known', 'core'),
